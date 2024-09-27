@@ -289,8 +289,10 @@
                         // Show the black overlay to prevent screen recording
                         document.querySelector('.overlay').style.display = 'block';
                         document.getElementById('videoFrame').src = ""; // Stop the video
+                        video.muted = true; // Mute the video to prevent sound from being recorded
                     } else {
                         document.querySelector('.overlay').style.display = 'none';
+                        video.muted = false; // Enable sound if no recording is detected
                     }
 
                     lastDecodedFrames = currentDecodedFrames;
