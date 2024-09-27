@@ -279,18 +279,28 @@
             function detectScreenRecord() {
                 var fps = 30;
                 var video = document.getElementById('videoFrame');
-                var overlay = document.querySelector('.overlay');
+                var lastDecodedFrames = video.webkitDecodedFrameCount;
 
-                setInterval(() => {
-                    if (video && video.webkitDecodedFrameCount < fps) {
-                        overlay.style.display = 'block'; // Show the black overlay when screen recording is detected
+                setInterval(function () {
+                    var currentDecodedFrames = video.webkitDecodedFrameCount;
+
+                    // If no frames were decoded or a very low number, possible screen recording
+                    if (currentDecodedFrames - lastDecodedFrames < fps / 2) {
+                        // Show the black overlay to prevent screen recording
+                        document.querySelector('.overlay').style.display = 'block';
+                        document.getElementById('videoFrame').src = ""; // Stop the video
                     } else {
-                        overlay.style.display = 'none'; // Hide overlay if not detected
+                        document.querySelector('.overlay').style.display = 'none';
                     }
+
+                    lastDecodedFrames = currentDecodedFrames;
                 }, 1000);
             }
 
-            window.onload = detectScreenRecord;
+            // Start detection when video modal is opened
+            $('#videoModal').on('shown.bs.modal', function () {
+                detectScreenRecord();
+            });
         </script>
 </body>
 
