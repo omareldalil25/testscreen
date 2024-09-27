@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حصص الصف الثالث الثانوي</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #000000;
+            background: -webkit-linear-gradient(to right, #434343, #000000);
+            background: linear-gradient(to right, #434343, #000000);
+        }
+
+        .navbar {
+            background-color: #ffffff;
+        }
+
+        .navbar-brand {
+            padding-left: 20px;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+            padding-right: 50px;
+        }
+
+        .navbar-brand img {
+            height: 60px;
+        }
+
+        .nav-link {
+            font-size: 16px;
+            color: #000;
+        }
+
+        .nav-link i {
+            margin-right: 5px;
+        }
+
+        @media (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+                padding-right: 0;
+            }
+        }
+
+        /* Image Boxes */
+        .image-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-box {
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .image-box img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 4px solid #000;
+            /* إضافة الحدود البيضاء */
+        }
+
+
+        .image-box img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Video Modal */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-icon i {
+            font-size: 30px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .image-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Container to position the video overlay */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Overlay to cover the video controls */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+
+        /* Hiding Google Drive Controls Icon */
+        .video-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background-color: transparent;
+            z-index: 999;
+        }
+
+        @media (max-width: 767px) {
+            .login-btn {
+                display: block;
+                width: 80%;
+                margin-left: 0;
+                margin-bottom: 10px;
+                /* مسافة بين الزرار والنص */
+                margin-top: 5px;
+            }
+
+            .text-center span {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="../../starting/starting.html">
+            <img src="../../starting/aa.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../login/login.html">
+                        <i class="fas fa-user"></i> تسجيل الدخول
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content of Subscribe 1 page -->
+    <div class="container mt-5">
+        <!-- Image Boxes -->
+        <div class="image-boxes">
+            <!-- Video Box 1 -->
+            <div class="image-box">
+                <img src="./videos/1.jpg" alt="Lesson 1 Image"
+                    onclick="showVideo('1s6rlrcFVI5hwsK2XRT1dG_-9N1QQ_7Sp');">
+            </div>
+
+            <!-- Video Box 2 -->
+            <div class="image-box">
+                <img src="./videos/2.jpg" alt="Lesson 2 Image"
+                    onclick="showVideo('1FifoIX5Phqzu1t-94LDeR2yusvdabzJb');">
+            </div>
+
+            <!-- Video Box 3 -->
+            <div class="image-box">
+                <img src="./videos/3.jpg" alt="Lesson 3 Image" onclick="showVideo('1NaNh0tTJsXNv_LPUdGEOLyE3UT_togPE')
+                ;">
+            </div>
+
+            <!-- Video Box 4 -->
+            <div class="image-box">
+                <img src="./videos/4.jpg" alt="Lesson 4 Image" 
+                    onclick="showVideo('1kW-Hxt6_K1Mtca_b_aVA-Sec773EmRSy') ;">
+            </div>
+
+            <!-- Video Box 5 -->
+            <div class="image-box">
+                <img src="./videos/5.jpg" alt="Lesson 5 Image" 
+                onclick="showVideo('1Ap3qjMlUjy7BtYbydWueVS6SpdYfZpNb') ;">
+            </div>
+
+            <!-- Video Box 6 -->
+            <div class="image-box">
+                <img src="./videos/6.jpg" alt="Lesson 6 Image" 
+                <!-- onclick="showVideo('1xLjzHGxBF8iAnqJlkg4TBqa1Pa7rb-FU')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 7 -->
+            <div class="image-box">
+                <img src="./videos/7.jpg" alt="Lesson 7 Image" 
+                <!-- onclick="showVideo('1sTvOvuHCl8rjB6dYqbQLgAO3Q8i9H2Cd')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 8 -->
+            <div class="image-box">
+                <img src="./videos/8.jpg" alt="Lesson 8 Image" 
+                <!-- onclick="showVideo('1B0jU21QmSoxC_5Ot2YW54ddulghGxd6b')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 9 -->
+            <div class="image-box">
+                <img src="./videos/9.jpg" alt="Lesson 9 Image" 
+                <!-- onclick="showVideo('1LY25TUnn_BsrvKAgDd6M8DApkOhDf4Pb')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 10 -->
+            <div class="image-box">
+                <img src="./videos/10.jpg" alt="Lesson 10 Image" 
+                <!-- onclick="showVideo('1ihMn2MUvFn6Ynn6Gjah4JGXiOZ-0k-_V')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 11 -->
+            <div class="image-box">
+                <img src="./videos/11.jpg" alt="Lesson 11 Image" 
+                <!-- onclick="showVideo('1d9W6cmTyheqpm4Eu7ZmtIlFXnQKn0G51')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 12 -->
+            <div class="image-box">
+                <img src="./videos/12.jpg" alt="Lesson 12 Image" 
+                <!-- onclick="showVideo('12GDIxI332TNysBJJtvZXuPCPBdmbCmwt')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 13 -->
+            <div class="image-box">
+                <img src="./videos/13.jpg" alt="Lesson 13 Image" 
+                <!-- onclick="showVideo('1WPGI4yam4Neo8nXA3XXZbzBaf70zE6Cy')  -->
+                ;">
+            </div>
+
+            <!-- Video Box 14 -->
+            <div class="image-box">
+                <img src="./videos/14.jpg" alt="Lesson 14 Image" 
+                <!-- onclick="showVideo('')  -->
+                ;">
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="videoModalLabel">Lesson Video</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="video-container">
+                            <!-- Google Drive Embed Link -->
+                            <iframe id="videoFrame" src="" allowfullscreen></iframe>
+                            <div class="video-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Icon -->
+        <div class="whatsapp-icon" onclick="location.href='https://wa.me/201062039393';">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function showVideo(videoId) {
+                var videoSrc = "https://drive.google.com/file/d/" + videoId + "/preview";
+                document.getElementById('videoFrame').src = videoSrc;
+                $('#videoModal').modal('show');
+            }
+        </script>
+</body>
+
+</html>
