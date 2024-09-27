@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Dalil</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="logo-container">
+        <img src="./logo.svg" alt="Logo" id="logo-img">
+        <button id="skip-btn">
+            <i class="fa-solid fa-forward fa-beat"></i>
+        </button> <!-- زر التخطي -->
+    </div>
+    <audio id="type-sound" src="./sounds/logo_opener(chosic.com).mp3" preload="auto"></audio>
+
+    <script>
+        const typeSound = document.getElementById("type-sound");
+
+        // تشغيل الصوت بعد التفاعل الأول مع الصفحة
+        document.body.addEventListener('click', () => {
+            typeSound.play(); 
+        }, { once: true }); // مرة واحدة فقط
+
+        // Start the animation after the logo drops
+        window.onload = () => {
+            setTimeout(() => {
+                window.location.href = './starting/starting.html';
+            }, 6500); // الانتقال للصفحة بعد 6.5 ثواني
+        };
+
+        // Add event listener to the skip button
+        document.getElementById("skip-btn").addEventListener("click", () => {
+            window.location.href = './starting/starting.html';
+        });
+    </script>
+</body>
+</html>
