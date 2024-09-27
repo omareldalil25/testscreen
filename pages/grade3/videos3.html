@@ -69,9 +69,7 @@
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 4px solid #000;
-            /* إضافة الحدود البيضاء */
         }
-
 
         .image-box img:hover {
             transform: scale(1.05);
@@ -148,12 +146,24 @@
             }
         }
 
+        /* Overlay that appears when screen recording is detected */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0.9;
+            z-index: 1000;
+            display: none;
+        }
+
         /* Container to position the video overlay */
         .video-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
-            /* 16:9 aspect ratio */
             height: 0;
         }
 
@@ -164,17 +174,6 @@
             width: 100%;
             height: 100%;
             border: 0;
-        }
-
-        /* Overlay to cover the video controls */
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            pointer-events: none;
         }
 
         /* Hiding Google Drive Controls Icon */
@@ -195,7 +194,6 @@
                 width: 80%;
                 margin-left: 0;
                 margin-bottom: 10px;
-                /* مسافة بين الزرار والنص */
                 margin-top: 5px;
             }
 
@@ -208,6 +206,9 @@
 </head>
 
 <body>
+    <!-- Overlay that will appear when recording is detected -->
+    <div class="overlay"></div>
+
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="../../starting/starting.html">
             <img src="../../starting/aa.png" alt="Logo">
@@ -229,7 +230,6 @@
 
     <!-- Content of Subscribe 1 page -->
     <div class="container mt-5">
-        <!-- Image Boxes -->
         <div class="image-boxes">
             <!-- Video Box 1 -->
             <div class="image-box">
@@ -237,92 +237,7 @@
                     onclick="showVideo('1s6rlrcFVI5hwsK2XRT1dG_-9N1QQ_7Sp');">
             </div>
 
-            <!-- Video Box 2 -->
-            <div class="image-box">
-                <img src="./videos/2.jpg" alt="Lesson 2 Image"
-                    onclick="showVideo('1FifoIX5Phqzu1t-94LDeR2yusvdabzJb');">
-            </div>
-
-            <!-- Video Box 3 -->
-            <div class="image-box">
-                <img src="./videos/3.jpg" alt="Lesson 3 Image" onclick="showVideo('1NaNh0tTJsXNv_LPUdGEOLyE3UT_togPE')
-                ;">
-            </div>
-
-            <!-- Video Box 4 -->
-            <div class="image-box">
-                <img src="./videos/4.jpg" alt="Lesson 4 Image" 
-                    onclick="showVideo('1kW-Hxt6_K1Mtca_b_aVA-Sec773EmRSy') ;">
-            </div>
-
-            <!-- Video Box 5 -->
-            <div class="image-box">
-                <img src="./videos/5.jpg" alt="Lesson 5 Image" 
-                onclick="showVideo('1Ap3qjMlUjy7BtYbydWueVS6SpdYfZpNb') ;">
-            </div>
-
-            <!-- Video Box 6 -->
-            <div class="image-box">
-                <img src="./videos/6.jpg" alt="Lesson 6 Image" 
-                <!-- onclick="showVideo('1xLjzHGxBF8iAnqJlkg4TBqa1Pa7rb-FU')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 7 -->
-            <div class="image-box">
-                <img src="./videos/7.jpg" alt="Lesson 7 Image" 
-                <!-- onclick="showVideo('1sTvOvuHCl8rjB6dYqbQLgAO3Q8i9H2Cd')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 8 -->
-            <div class="image-box">
-                <img src="./videos/8.jpg" alt="Lesson 8 Image" 
-                <!-- onclick="showVideo('1B0jU21QmSoxC_5Ot2YW54ddulghGxd6b')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 9 -->
-            <div class="image-box">
-                <img src="./videos/9.jpg" alt="Lesson 9 Image" 
-                <!-- onclick="showVideo('1LY25TUnn_BsrvKAgDd6M8DApkOhDf4Pb')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 10 -->
-            <div class="image-box">
-                <img src="./videos/10.jpg" alt="Lesson 10 Image" 
-                <!-- onclick="showVideo('1ihMn2MUvFn6Ynn6Gjah4JGXiOZ-0k-_V')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 11 -->
-            <div class="image-box">
-                <img src="./videos/11.jpg" alt="Lesson 11 Image" 
-                <!-- onclick="showVideo('1d9W6cmTyheqpm4Eu7ZmtIlFXnQKn0G51')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 12 -->
-            <div class="image-box">
-                <img src="./videos/12.jpg" alt="Lesson 12 Image" 
-                <!-- onclick="showVideo('12GDIxI332TNysBJJtvZXuPCPBdmbCmwt')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 13 -->
-            <div class="image-box">
-                <img src="./videos/13.jpg" alt="Lesson 13 Image" 
-                <!-- onclick="showVideo('1WPGI4yam4Neo8nXA3XXZbzBaf70zE6Cy')  -->
-                ;">
-            </div>
-
-            <!-- Video Box 14 -->
-            <div class="image-box">
-                <img src="./videos/14.jpg" alt="Lesson 14 Image" 
-                <!-- onclick="showVideo('')  -->
-                ;">
-            </div>
+            <!-- Add more video boxes as needed -->
         </div>
 
         <!-- Video Modal -->
@@ -337,7 +252,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="video-container">
-                            <!-- Google Drive Embed Link -->
                             <iframe id="videoFrame" src="" allowfullscreen></iframe>
                             <div class="video-overlay"></div>
                         </div>
@@ -360,6 +274,23 @@
                 document.getElementById('videoFrame').src = videoSrc;
                 $('#videoModal').modal('show');
             }
+
+            // Detecting potential screen recording activity
+            function detectScreenRecord() {
+                var fps = 30;
+                var video = document.getElementById('videoFrame');
+                var overlay = document.querySelector('.overlay');
+
+                setInterval(() => {
+                    if (video && video.webkitDecodedFrameCount < fps) {
+                        overlay.style.display = 'block'; // Show the black overlay when screen recording is detected
+                    } else {
+                        overlay.style.display = 'none'; // Hide overlay if not detected
+                    }
+                }, 1000);
+            }
+
+            window.onload = detectScreenRecord;
         </script>
 </body>
 
