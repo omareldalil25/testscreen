@@ -40,13 +40,6 @@
             margin-right: 5px;
         }
 
-        @media (max-width: 767px) {
-            .navbar-nav {
-                text-align: center;
-                padding-right: 0;
-            }
-        }
-
         /* Image Boxes */
         .image-boxes {
             display: flex;
@@ -93,59 +86,6 @@
             border: 0;
         }
 
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            pointer-events: none;
-        }
-
-        /* WhatsApp Icon */
-        .whatsapp-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-icon i {
-            font-size: 30px;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @media (max-width: 767px) {
-            .image-boxes {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
         /* Overlay that appears when screen recording is detected */
         .overlay {
             position: fixed;
@@ -159,47 +99,10 @@
             display: none;
         }
 
-        /* Container to position the video overlay */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* Hiding Google Drive Controls Icon */
-        .video-container::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60px;
-            height: 60px;
-            background-color: transparent;
-            z-index: 999;
-        }
-
         @media (max-width: 767px) {
-            .login-btn {
-                display: block;
-                width: 80%;
-                margin-left: 0;
-                margin-bottom: 10px;
-                margin-top: 5px;
-            }
-
-            .text-center span {
-                display: block;
-                text-align: center;
+            .image-boxes {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -210,8 +113,8 @@
     <div class="overlay"></div>
 
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="../../starting/starting.html">
-            <img src="../../starting/aa.png" alt="Logo">
+        <a class="navbar-brand" href="#">
+            <img src="your-logo.png" alt="Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -220,7 +123,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="../login/login.html">
+                    <a class="nav-link" href="#">
                         <i class="fas fa-user"></i> تسجيل الدخول
                     </a>
                 </li>
@@ -236,7 +139,6 @@
                 <img src="./videos/1.jpg" alt="Lesson 1 Image"
                     onclick="showVideo('1s6rlrcFVI5hwsK2XRT1dG_-9N1QQ_7Sp');">
             </div>
-
             <!-- Add more video boxes as needed -->
         </div>
 
@@ -253,7 +155,6 @@
                     <div class="modal-body">
                         <div class="video-container">
                             <iframe id="videoFrame" src="" allowfullscreen></iframe>
-                            <div class="video-overlay"></div>
                         </div>
                     </div>
                 </div>
@@ -275,27 +176,22 @@
                 $('#videoModal').modal('show');
             }
 
-            // Detecting potential screen recording activity
+            // Function to detect screen recording
             function detectScreenRecord() {
-                var fps = 30;
                 var video = document.getElementById('videoFrame');
-                var lastDecodedFrames = video.webkitDecodedFrameCount;
+                
+                // Check if the video is visible (indicating potential screen recording)
+                var isRecordingDetected = false;
 
                 setInterval(function () {
-                    var currentDecodedFrames = video.webkitDecodedFrameCount;
-
-                    // If no frames were decoded or a very low number, possible screen recording
-                    if (currentDecodedFrames - lastDecodedFrames < fps / 2) {
-                        // Show the black overlay to prevent screen recording
-                        document.querySelector('.overlay').style.display = 'block';
-                        document.getElementById('videoFrame').src = ""; // Stop the video
-                        video.muted = true; // Mute the video to prevent sound from being recorded
-                    } else {
-                        document.querySelector('.overlay').style.display = 'none';
-                        video.muted = false; // Enable sound if no recording is detected
+                    if (video && video.currentTime > 0) {
+                        if (!isRecordingDetected) {
+                            // Mute the video and hide it by displaying a black overlay
+                            document.querySelector('.overlay').style.display = 'block';
+                            video.src = ""; // Disable the video entirely
+                            isRecordingDetected = true;
+                        }
                     }
-
-                    lastDecodedFrames = currentDecodedFrames;
                 }, 1000);
             }
 
